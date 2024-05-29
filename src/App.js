@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import { useState } from "react";
 
-function App() {
+function Player({ setChoice }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="player">
+      <button
+        onClick={() => {
+          setChoice(1);
+        }}
+      >
+        Rock
+      </button>
+      <button
+        onClick={() => {
+          setChoice(2);
+        }}
+      >
+        Paper
+      </button>
+      <button
+        onClick={() => {
+          setChoice(3);
+        }}
+      >
+        Scissors
+      </button>
     </div>
   );
 }
 
-export default App;
+export default function Game() {
+  const [player, setPlayerChoice] = useState(null);
+
+  return (
+    <>
+      <Text />
+      <Player setChoice={setPlayerChoice} />
+    </>
+  );
+}
+
+function Text() {
+  const [text, setText] = useState("Waiting for your choice!");
+  return <div className="text">{text}</div>;
+}
